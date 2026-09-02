@@ -1,0 +1,112 @@
+4. Processamento de Imagens
+4.1 Conceito
+
+O Processamento de Imagens é a área da Computação Visual responsável pelo processamento e transformação de imagens digitais utilizando técnicas computacionais.
+
+Diferentemente da Computação Gráfica, que pode criar uma imagem a partir de modelos e informações geométricas, o Processamento de Imagens normalmente utiliza uma imagem existente como entrada.
+
+O objetivo pode ser melhorar a qualidade da imagem, modificar sua aparência, reduzir ruídos ou extrair determinadas características.
+
+Entre suas principais aplicações estão:
+
+Melhoria de imagens;
+Redução de ruído;
+Ajuste de brilho e contraste;
+Aplicação de filtros;
+Detecção de bordas;
+Conversão para escala de cinza;
+Binarização;
+Segmentação de imagens;
+Reconhecimento e análise de padrões.
+
+Uma das principais características dessa área é trabalhar diretamente com os pixels de uma imagem, realizando operações que modificam ou extraem informações da representação digital.
+
+4.2 Aplicação escolhida
+
+Para demonstrar essa área, foi escolhido um exemplo de limiarização de imagens, também conhecido como thresholding, utilizando a biblioteca OpenCV.
+
+O OpenCV
+ é uma biblioteca de código aberto amplamente utilizada para processamento de imagens, visão computacional e análise de vídeos.
+
+Neste experimento, uma imagem colorida será carregada e posteriormente convertida para escala de cinza. Em seguida, será aplicado um processo de limiarização, transformando a imagem em uma representação binária.
+
+O projeto oficial pode ser consultado no repositório do OpenCV
+.
+
+Fluxo da aplicação
+Imagem original
+       ↓
+Conversão para escala de cinza
+       ↓
+Aplicação do Threshold
+       ↓
+Imagem binária
+
+
+Nesse experimento, os pixels da imagem são classificados de acordo com um determinado valor de intensidade.
+
+Foi utilizado o valor de limiar 127. De forma simplificada:
+
+Pixel <= 127 → Preto (0)
+
+Pixel > 127 → Branco (255)
+
+
+Dessa forma, a imagem original é transformada em uma imagem composta basicamente por pixels pretos e brancos.
+
+4.4 Explicação
+
+Inicialmente, a imagem é carregada utilizando a função:
+
+cv2.imread()
+
+
+Depois, a imagem é convertida para escala de cinza através da função:
+
+cv2.cvtColor()
+
+
+Uma imagem em escala de cinza possui apenas informações relacionadas à intensidade dos pixels.
+
+Posteriormente, é utilizada a função:
+
+cv2.threshold()
+
+
+para realizar a limiarização.
+
+O valor utilizado como limiar foi:
+
+limiar = 127
+
+
+Assim, os pixels são classificados de acordo com sua intensidade.
+
+O resultado final é uma imagem binária, na qual os pixels assumem principalmente os valores 0 ou 255.
+
+4.5 Resultado
+
+A execução do programa produz uma comparação entre a imagem em escala de cinza e a imagem após a aplicação do threshold.
+
+Figura 2 — Aplicação de limiarização utilizando OpenCV.
+
+Observação: a imagem acima deve ser substituída pelo screenshot obtido durante a execução do programa.
+
+4.6 Análise
+
+Esse experimento representa uma aplicação de Processamento de Imagens, pois uma imagem existente é utilizada como entrada e posteriormente transformada.
+
+O objetivo principal não é identificar o objeto presente na imagem, mas realizar uma operação sobre os pixels.
+
+O processo pode ser resumido como:
+
+Imagem existente
+       ↓
+Processamento dos pixels
+       ↓
+Transformação
+       ↓
+Nova representação da imagem
+
+
+Portanto, o experimento demonstra uma das principais características do Processamento de Imagens: a transformação e manipulação de imagens digitais.
