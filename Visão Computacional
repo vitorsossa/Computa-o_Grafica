@@ -1,28 +1,55 @@
-import open3d as o3d
+import torch
+
+from torchvision.io import decode_image
+from torchvision.models import (
+    resnet50,
+    ResNet50_Weights
+)
+
+
+CAMINHO_IMAGEM = "imagens/imagem_teste.jpg"
 
 
 def main():
-    # Obtém uma nuvem de pontos de exemplo
-    dados = o3d.data.PCDPointCloud()
+    # Carrega os pesos pré-treinados
+    weights = ResNet50_Weights.DEFAULT
 
-    # Carrega a nuvem de pontos
-    nuvem = o3d.io.read_point_cloud(
-        dados.path
-    )
+    # Cria o modelo ResNet-50
+    model = resnet50(weights=weights)
 
-    # Exibe informações no terminal
-    print(nuvem)
+    # Coloca o modelo em modo de avaliação
+    model.eval()
 
-    print(
-        "Quantidade de pontos:",
-        len(nuvem.points)
-    )
+    # Carrega a imagem
+    imagem = decode_image(CAMINHO_IMAGEM)
 
-    # Visualiza a nuvem
-    o3d.visualization.draw_geometries(
-        [nuvem],
-        window_name="Visualização de Nuvem de Pontos"
-    )
+    # Obtém as transformações recomendadas
+    preprocess = weights.transforms()
+
+    # Realiza o pré-processamento
+    batch = preprocess(imagem).unsqueeze(0)
+
+    # Realiza a classificação
+    with torch.no_grad():
+        prediction = model(batch)
+
+    # Converte os resultados em probabilidades
+    probabilidades = prediction.squeeze(0).softmax(0)
+
+    # Obtém as cinco maiores probabilidades
+    class_ids = probabilidades.argsort(
+        descending=True
+    )[:5]
+
+    print("\nPrincipais previsões:\n")
+
+    for class_id in class_ids:
+        score = probabilidades[class_id].item()
+        categoria = weights.meta["categories"][class_id]
+
+        print(
+            f"{categoria}: {score * 100:.2f}%"
+        )
 
 
 if __name__ == "__main__":
