@@ -1,121 +1,29 @@
-6. Visualização Computacional
-6.1 Conceito
-
-A Visualização Computacional é a área responsável pela representação visual de dados utilizando recursos computacionais.
-
-Seu principal objetivo é transformar conjuntos de dados, que muitas vezes podem ser complexos ou difíceis de interpretar diretamente, em representações visuais que facilitem sua compreensão e análise.
-
-Os dados podem ser representados em duas ou três dimensões e podem possuir diferentes formatos.
-
-Entre suas principais aplicações estão:
-
-Visualização científica;
-Visualização médica;
-Gráficos;
-Mapas;
-Visualização geográfica;
-Simulações;
-Visualização de dados financeiros;
-Modelos tridimensionais;
-Nuvens de pontos;
-Análise de dados científicos.
-
-Uma das principais características dessa área é utilizar recursos gráficos para permitir que uma pessoa consiga identificar padrões, estruturas e relações presentes nos dados.
-
-6.2 Aplicação escolhida
-
-Para demonstrar essa área, foi escolhida a visualização de uma nuvem de pontos tridimensional utilizando a biblioteca Open3D.
-
-Uma nuvem de pontos é um conjunto de pontos que representam posições no espaço tridimensional.
-
-Cada ponto pode ser representado por três coordenadas:
-
-(x, y, z)
+import open3d as o3d
 
 
-Um grande conjunto desses pontos pode representar objetos, ambientes ou superfícies tridimensionais.
+def main():
+    # Obtém uma nuvem de pontos de exemplo
+    dados = o3d.data.PCDPointCloud()
 
-O Open3D possui ferramentas específicas para leitura, processamento e visualização de nuvens de pontos.
+    # Carrega a nuvem de pontos
+    nuvem = o3d.io.read_point_cloud(
+        dados.path
+    )
 
-O projeto oficial pode ser consultado no repositório do Open3D
-.
+    # Exibe informações no terminal
+    print(nuvem)
 
-Fluxo da aplicação
-Dados tridimensionais
-          ↓
-Leitura dos dados
-          ↓
-Organização dos pontos
-          ↓
-Representação visual
-          ↓
-Análise pelo usuário
+    print(
+        "Quantidade de pontos:",
+        len(nuvem.points)
+    )
 
-
-Neste caso, os dados já existem. O objetivo principal é criar uma representação visual que permita ao usuário observar e analisar a estrutura tridimensional.
-
-6.4 Explicação
-
-Inicialmente, o programa obtém uma nuvem de pontos de exemplo através de:
-
-o3d.data.PCDPointCloud()
+    # Visualiza a nuvem
+    o3d.visualization.draw_geometries(
+        [nuvem],
+        window_name="Visualização de Nuvem de Pontos"
+    )
 
 
-Em seguida, os dados são carregados utilizando:
-
-o3d.io.read_point_cloud()
-
-
-A nuvem de pontos contém diversas posições no espaço tridimensional.
-
-Cada ponto pode ser representado conceitualmente como:
-
-(x, y, z)
-
-
-O número total de pontos pode ser obtido utilizando:
-
-len(nuvem.points)
-
-
-Por fim, os dados são apresentados através da função:
-
-o3d.visualization.draw_geometries()
-
-
-Essa ferramenta permite visualizar a estrutura tridimensional e interagir com a representação, realizando operações como rotação e zoom.
-
-6.5 Resultado
-
-O resultado esperado é uma representação tridimensional da nuvem de pontos.
-
-Figura 4 — Visualização de uma nuvem de pontos tridimensional utilizando Open3D.
-
-Observação: substitua a imagem acima pelo screenshot obtido durante a execução do programa.
-
-6.6 Análise
-
-Esse experimento representa uma aplicação de Visualização Computacional, pois o objetivo é representar visualmente um conjunto de dados tridimensionais.
-
-Diferentemente da Computação Gráfica, o foco não está necessariamente na criação de um objeto artificial para gerar uma imagem.
-
-Também não existe como objetivo principal modificar os pixels de uma imagem ou identificar automaticamente seu conteúdo.
-
-O foco está na representação visual dos dados para facilitar sua análise.
-
-O processo pode ser representado por:
-
-Dados
-  ↓
-Processamento/organização
-  ↓
-Representação visual
-  ↓
-Interação
-  ↓
-Análise dos dados
-
-
-Dessa maneira, a Visualização Computacional permite que estruturas e informações presentes nos dados sejam observadas de maneira mais intuitiva.
-
-Um exemplo de aplicação real seria a visualização de dados obtidos por sensores 3D, scanners, equipamentos médicos ou sistemas de mapeamento.
+if __name__ == "__main__":
+    main()
