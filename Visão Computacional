@@ -1,138 +1,29 @@
-5. Visão Computacional
-5.1 Conceito
-
-A Visão Computacional é a área da Computação Visual responsável pelo desenvolvimento de técnicas capazes de permitir que computadores obtenham informações e realizem interpretações a partir de imagens e vídeos.
-
-Enquanto o Processamento de Imagens está principalmente relacionado à transformação de imagens, a Visão Computacional busca extrair informações e significado do conteúdo visual.
-
-Entre suas principais aplicações estão:
-
-Reconhecimento de objetos;
-Reconhecimento facial;
-Detecção de pessoas;
-Reconhecimento de placas;
-Veículos autônomos;
-Robótica;
-Análise de imagens médicas;
-Inspeção industrial;
-Sistemas de segurança;
-Classificação de imagens.
-
-Uma das principais características da Visão Computacional é transformar dados visuais em informações que podem ser utilizadas por um sistema computacional.
-
-Um exemplo simples pode ser representado por:
-
-Imagem
-   ↓
-Algoritmo de Visão Computacional
-   ↓
-Análise da imagem
-   ↓
-Informação sobre o conteúdo
-
-5.2 Aplicação escolhida
-
-Para demonstrar essa área, foi escolhida uma aplicação de classificação de imagens utilizando Inteligência Artificial.
-
-Para isso, será utilizada uma rede neural convolucional ResNet-50, disponibilizada através da biblioteca TorchVision.
-
-O TorchVision
- faz parte do ecossistema PyTorch e disponibiliza modelos, conjuntos de dados e ferramentas voltadas para aplicações de visão computacional.
-
-Neste experimento, uma imagem será fornecida ao modelo ResNet-50, que tentará determinar quais categorias são mais prováveis para o conteúdo apresentado.
-
-O projeto oficial pode ser consultado no repositório do TorchVision
-.
-
-Fluxo da aplicação
-Imagem
-   ↓
-Pré-processamento
-   ↓
-Rede Neural ResNet-50
-   ↓
-Classificação
-   ↓
-Categorias e probabilidades
+import open3d as o3d
 
 
-Diferentemente do exemplo de Processamento de Imagens, o objetivo aqui não é apenas modificar os pixels da imagem.
+def main():
+    # Obtém uma nuvem de pontos de exemplo
+    dados = o3d.data.PCDPointCloud()
 
-O objetivo é interpretar o conteúdo visual e produzir uma informação sobre o que provavelmente está presente na imagem.
+    # Carrega a nuvem de pontos
+    nuvem = o3d.io.read_point_cloud(
+        dados.path
+    )
 
-5.4 Explicação
+    # Exibe informações no terminal
+    print(nuvem)
 
-Inicialmente são carregados os pesos pré-treinados do modelo:
+    print(
+        "Quantidade de pontos:",
+        len(nuvem.points)
+    )
 
-weights = ResNet50_Weights.DEFAULT
-
-
-Depois, a arquitetura ResNet-50 é criada:
-
-model = resnet50(weights=weights)
-
-
-Os pesos pré-treinados permitem que o modelo seja utilizado para realizar classificações sem que seja necessário treiná-lo novamente do zero.
-
-A imagem utilizada como entrada também precisa passar por um pré-processamento compatível com o modelo:
-
-preprocess = weights.transforms()
-
-
-Após o pré-processamento, a imagem é enviada para a rede neural:
-
-prediction = model(batch)
+    # Visualiza a nuvem
+    o3d.visualization.draw_geometries(
+        [nuvem],
+        window_name="Visualização de Nuvem de Pontos"
+    )
 
 
-O modelo retorna valores associados às diferentes categorias que ele conhece.
-
-Esses valores são transformados em probabilidades através da função:
-
-softmax()
-
-
-Por fim, são selecionadas as cinco categorias com maiores probabilidades.
-
-5.5 Resultado
-
-O programa apresenta no terminal as cinco categorias consideradas mais prováveis pelo modelo.
-
-Um exemplo de saída possui o seguinte formato:
-
-Principais previsões:
-
-categoria_1: XX.XX%
-categoria_2: XX.XX%
-categoria_3: XX.XX%
-categoria_4: XX.XX%
-categoria_5: XX.XX%
-
-
-Figura 3 — Resultado da classificação utilizando ResNet-50.
-
-Observação: os resultados dependem da imagem utilizada. Os valores apresentados no projeto devem corresponder à execução realizada.
-
-5.6 Análise
-
-Esse experimento representa uma aplicação de Visão Computacional, pois o sistema recebe uma imagem e tenta extrair informações sobre seu conteúdo.
-
-O objetivo não é apenas transformar a imagem, mas utilizar um modelo computacional para interpretá-la.
-
-O processo pode ser representado por:
-
-Imagem
-   ↓
-Pré-processamento
-   ↓
-Rede neural
-   ↓
-Análise
-   ↓
-Classificação
-   ↓
-Informação sobre a imagem
-
-
-Esse exemplo demonstra como técnicas de Inteligência Artificial podem ser utilizadas para interpretar informações presentes em imagens.
-
-Portanto, uma característica fundamental da Visão Computacional é a capacidade de transformar dados visuais em informações que podem ser utilizadas para tomada de decisões ou outras tarefas computacionais.
+if __name__ == "__main__":
+    main()
