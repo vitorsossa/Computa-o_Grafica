@@ -1,5 +1,5 @@
-3. Computação Gráfica / Síntese de Imagens
-3.1 Conceito
+1. Computação Gráfica / Síntese de Imagens
+1.1 Conceito
 A Computação Gráfica é a área responsável pela criação e manipulação de representações visuais utilizando computadores.
 
 Na síntese de imagens, o computador parte de informações como objetos geométricos, modelos tridimensionais, materiais, iluminação e posição de câmera para produzir uma representação visual.
@@ -16,15 +16,15 @@ Modelagem tridimensional;
 Visualização arquitetônica.
 Uma das principais características dessa área é que a imagem pode ser gerada a partir de uma representação matemática ou geométrica.
 
-3.2 Aplicação escolhida
+1.2 Aplicação escolhida
 Para demonstrar essa área foi escolhido um exemplo de criação de um objeto tridimensional utilizando a biblioteca Open3D.
 
 O Open3D é uma biblioteca de código aberto voltada para processamento de dados 3D e possui suporte a geometria, visualização, nuvens de pontos e malhas triangulares.
 
 O projeto oficial pode ser consultado no repositório do Open3D.
 
-4. Processamento de Imagens
-4.1 Conceito
+2. Processamento de Imagens
+2.1 Conceito
 
 O Processamento de Imagens é a área da Computação Visual responsável pelo processamento e transformação de imagens digitais utilizando técnicas computacionais.
 
@@ -46,7 +46,7 @@ Reconhecimento e análise de padrões.
 
 Uma das principais características dessa área é trabalhar diretamente com os pixels de uma imagem, realizando operações que modificam ou extraem informações da representação digital.
 
-4.2 Aplicação escolhida
+2.2 Aplicação escolhida
 
 Para demonstrar essa área, foi escolhido um exemplo de limiarização de imagens, também conhecido como thresholding, utilizando a biblioteca OpenCV.
 
@@ -79,7 +79,7 @@ Pixel > 127 → Branco (255)
 
 Dessa forma, a imagem original é transformada em uma imagem composta basicamente por pixels pretos e brancos.
 
-4.4 Explicação
+2.4 Explicação
 
 Inicialmente, a imagem é carregada utilizando a função:
 
@@ -109,7 +109,7 @@ Assim, os pixels são classificados de acordo com sua intensidade.
 
 O resultado final é uma imagem binária, na qual os pixels assumem principalmente os valores 0 ou 255.
 
-4.5 Resultado
+2.5 Resultado
 
 A execução do programa produz uma comparação entre a imagem em escala de cinza e a imagem após a aplicação do threshold.
 
@@ -117,7 +117,7 @@ Figura 2 — Aplicação de limiarização utilizando OpenCV.
 
 Observação: a imagem acima deve ser substituída pelo screenshot obtido durante a execução do programa.
 
-4.6 Análise
+2.6 Análise
 
 Esse experimento representa uma aplicação de Processamento de Imagens, pois uma imagem existente é utilizada como entrada e posteriormente transformada.
 
@@ -136,8 +136,8 @@ Nova representação da imagem
 
 Portanto, o experimento demonstra uma das principais características do Processamento de Imagens: a transformação e manipulação de imagens digitais.
 
-5. Visão Computacional
-5.1 Conceito
+3. Visão Computacional
+3.1 Conceito
 
 A Visão Computacional é a área da Computação Visual responsável pelo desenvolvimento de técnicas capazes de permitir que computadores obtenham informações e realizem interpretações a partir de imagens e vídeos.
 
@@ -168,7 +168,7 @@ Análise da imagem
    ↓
 Informação sobre o conteúdo
 
-5.2 Aplicação escolhida
+3.2 Aplicação escolhida
 
 Para demonstrar essa área, foi escolhida uma aplicação de classificação de imagens utilizando Inteligência Artificial.
 
@@ -198,7 +198,7 @@ Diferentemente do exemplo de Processamento de Imagens, o objetivo aqui não é a
 
 O objetivo é interpretar o conteúdo visual e produzir uma informação sobre o que provavelmente está presente na imagem.
 
-5.4 Explicação
+3.4 Explicação
 
 Inicialmente são carregados os pesos pré-treinados do modelo:
 
@@ -231,7 +231,7 @@ softmax()
 
 Por fim, são selecionadas as cinco categorias com maiores probabilidades.
 
-5.5 Resultado
+3.5 Resultado
 
 O programa apresenta no terminal as cinco categorias consideradas mais prováveis pelo modelo.
 
@@ -250,7 +250,7 @@ Figura 3 — Resultado da classificação utilizando ResNet-50.
 
 Observação: os resultados dependem da imagem utilizada. Os valores apresentados no projeto devem corresponder à execução realizada.
 
-5.6 Análise
+3.6 Análise
 
 Esse experimento representa uma aplicação de Visão Computacional, pois o sistema recebe uma imagem e tenta extrair informações sobre seu conteúdo.
 
@@ -275,8 +275,8 @@ Esse exemplo demonstra como técnicas de Inteligência Artificial podem ser util
 
 Portanto, uma característica fundamental da Visão Computacional é a capacidade de transformar dados visuais em informações que podem ser utilizadas para tomada de decisões ou outras tarefas computacionais.
 
-6. Visualização Computacional
-6.1 Conceito
+4. Visualização Computacional
+4.1 Conceito
 
 A Visualização Computacional é a área responsável pela representação visual de dados utilizando recursos computacionais.
 
@@ -299,7 +299,7 @@ Análise de dados científicos.
 
 Uma das principais características dessa área é utilizar recursos gráficos para permitir que uma pessoa consiga identificar padrões, estruturas e relações presentes nos dados.
 
-6.2 Aplicação escolhida
+4.2 Aplicação escolhida
 
 Para demonstrar essa área, foi escolhida a visualização de uma nuvem de pontos tridimensional utilizando a biblioteca Open3D.
 
@@ -331,7 +331,7 @@ Análise pelo usuário
 
 Neste caso, os dados já existem. O objetivo principal é criar uma representação visual que permita ao usuário observar e analisar a estrutura tridimensional.
 
-6.4 Explicação
+4.4 Explicação
 
 Inicialmente, o programa obtém uma nuvem de pontos de exemplo através de:
 
@@ -362,7 +362,7 @@ o3d.visualization.draw_geometries()
 
 Essa ferramenta permite visualizar a estrutura tridimensional e interagir com a representação, realizando operações como rotação e zoom.
 
-6.5 Resultado
+4.5 Resultado
 
 O resultado esperado é uma representação tridimensional da nuvem de pontos.
 
@@ -370,7 +370,7 @@ Figura 4 — Visualização de uma nuvem de pontos tridimensional utilizando Ope
 
 Observação: substitua a imagem acima pelo screenshot obtido durante a execução do programa.
 
-6.6 Análise
+4.6 Análise
 
 Esse experimento representa uma aplicação de Visualização Computacional, pois o objetivo é representar visualmente um conjunto de dados tridimensionais.
 
